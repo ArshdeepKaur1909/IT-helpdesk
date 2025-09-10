@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Desk Ticketing</title>
+  <link rel="stylesheet" href="/assets/css/helpdesk.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar" role="banner">
+    <!-- Left -->
+    <div class="nav-left">
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="logo" title="Notonthehighstreet">
+        <img src="https://img.icons8.com/ios-filled/50/4a90e2/star.png" alt="logo">
+        <div class="brand">Notonthehighstreet</div>
+      </div>
+
+      <div class="workspace-dropdown">
+        <button class="workspace-btn" id="ws-btn" aria-haspopup="true" aria-expanded="false">
+          Help Desk
+          <i class="fa-solid fa-caret-down caret"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center icons -->
+    <div class="nav-icons" aria-hidden="false">
+      <i title="Notifications" class="fa-regular fa-bell"></i>
+      <i title="Messages" class="fa-regular fa-paper-plane"></i>
+      <i title="Apps" class="fa-solid fa-th"></i>
+      <i title="Orders" class="fa-solid fa-truck"></i>
+    </div>
+
+    <!-- Right -->
+    <div class="nav-right">
+      <input class="email-input" value="helpdesk@noths.com" aria-label="workspace email">
+      <button class="add-btn">+ Add Workspace</button>
+
+      <div class="user-profile" title="Andrew Thomas">
+        <div class="avatar">AT</div>
+        <div class="username">Andrew Thomas</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Layout Container -->
+  <div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <!-- Main Section -->
+        <li class="section dropdown-toggle"><i class="fa fa-solid fa-caret-down arrow"></i> Main</li>
+        <ul class="dropdown-content">
+          <li><a href="#"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="#"><i class="fa fa-ticket"></i> Tickets</a></li>
+          <li><a href="#"><i class="fa fa-inbox"></i> Incoming</a></li>
+        </ul>
+        <div class="divider"></div>
+
+        <!-- Additional Section -->
+        <li class="section dropdown-toggle"><i class="fa fa-solid fa-caret-down arrow"></i> Additional</li>
+        <ul class="dropdown-content">
+          <li><a href="#"><i class="fa fa-users"></i> People</a></li>
+          <li><a href="#" class="active"><i class="fa fa-briefcase"></i> Workspaces</a></li>
+          <li><a href="#"><i class="fa fa-database"></i> Resources</a></li>
+          <li><a href="#"><i class="fa fa-chart-pie"></i> Reporting</a></li>
+          <li><a href="#"><i class="fa fa-calendar"></i> Task Scheduler</a></li>
+          <li><a href="#"><i class="fa fa-cogs"></i> Automation</a></li>
+        </ul>
+        <div class="divider"></div>
+
+        <!-- Data Section -->
+        <li class="section dropdown-toggle"><i class="fa fa-solid fa-caret-down arrow"></i> Data</li>
+        <ul class="dropdown-content">
+          <li><a href="#"><i class="fa fa-file-export"></i> Export Data</a></li>
+          <li><a href="#"><i class="fa fa-file-import"></i> Import Data</a></li>
+        </ul>
+        <div class="divider"></div>
+
+        <!-- Settings Section -->
+        <li class="section dropdown-toggle"><i class="fa fa-solid fa-caret-down arrow"></i> Settings</li>
+        <ul class="dropdown-content">
+          <li><a href="#"><i class="fa fa-sliders-h"></i> Settings</a></li>
+          <li><a href="#"><i class="fa fa-bell"></i> Alerts</a></li>
+          <li><a href="#"><i class="fa fa-user-shield"></i> Permissions</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+    <h1>Help Desk Ticketing</h1>
+
+    <!-- Workspaces -->
+    <section class="workspace-section">
+        <div class="workspace-header">
+          <h2>Your Workspaces</h2>
+          <p>Workspaces allow companies to create different help desks for different groups inside the company.</p>
+        </div>
+        <input type="text" placeholder="Search by workspace name" class="search-bar">
+
+        <div class="workspace-card">
+          <div class="workspace-icon"><i class="fa fa-headset"></i></div>
+          <div class="workspace-info">
+            <h3>Helpdesk</h3>
+            <p>Admins, Everyone...</p>
+            <small>0 tickets • 1 form</small>
+          </div>
+        </div>
+    </section>
+    </main>
+  </div>
+
+  <!-- Script for Toggle -->
+  <script src = "/assets/js/helpdesk.js"></script>
+</body>
+</html>
