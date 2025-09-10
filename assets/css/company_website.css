@@ -1,0 +1,203 @@
+/* base */
+body { background: #fff; font-family: "Helvetica Neue", Arial, sans-serif; color:#222; }
+
+/* top bar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:.45rem 1rem;
+  border-bottom:1px solid #e6e6e6;
+  background:#fff;
+}
+.vodafone-logo{ width:30px; height:auto; }
+.company-name { font-size:15px; color:#222; }
+
+/* user profile (only name + logo) */
+.user-logo{ width:36px; height:36px; border-radius:50%; object-fit:cover; }
+.user-avatar{ width:36px; height:36px; border-radius:50%; background:#e60000; color:#fff; font-weight:700; }
+.user-name{ font-size:14px; font-weight:600; }
+
+/* top icons look muted */
+.topbar .bi { font-size:1.05rem; color:#666; }
+
+/* page header */
+.page-header h3{ font-size:28px; margin:0; font-weight:600; color:#3b3b3b; }
+
+/* cloud buttons (Import/Export) */
+.btn-cloud { border: none !important;; background:#fff; color:#3b3b3b; padding:.35rem .55rem; border-radius:6px;box-shadow: none; }
+.btn-cloud i { margin-right:.45rem; font-size:1rem; color:#6c757d; }
+
+/* small primary / outline styles */
+.btn-outline-primary { border:1px solid #0d6efd; color:#0d6efd; background:transparent; }
+.btn-primary { background:#0d6efd; border: none; }
+
+/* top-tabs (the small row: Settings, People, etc) */
+.top-tabs { display:flex; gap:.35rem; align-items:center; padding-left:0; margin:0; list-style:none; }
+.top-tabs .nav-link {
+  color:#555; padding:6px 10px; border-radius:4px; background:transparent; font-weight:500;
+}
+.top-tabs .nav-link.active {
+  color:#0d6efd; border-bottom:3px solid #0d6efd; background:transparent;
+}
+.dot{ width:6px; height:6px; background:#0d6efd; border-radius:50%; display:inline-block; margin-left:6px; }
+
+/* lower pills: only active pill will have background */
+.lower-pills .nav-link { color:#555; background:transparent; border-radius:20px; padding:8px 14px; margin-right:.35rem; }
+.lower-pills .nav-link.active { background:#0d6efd; color:#fff; }
+
+/* SEARCH + ACTIONS */
+.search-box{ width:420px; max-width:100%; border:1px solid #e6e6e6; padding:.5rem .6rem; border-radius:6px; }
+
+/* action buttons (small icon + muted) */
+.action-btn {
+  display:inline-flex; align-items:center; gap:.4rem;
+  border:1px solid #e9ecef; background:#fff; color:#495057;
+  padding:.375rem .6rem; border-radius:6px; font-size:13px;
+}
+
+.action-btn#inviteBtn {
+  border: none !important;
+  background: #fff; /* keep consistent look */
+  box-shadow: none;
+}
+
+.btn-cloud:hover,
+.action-btn#inviteBtn:hover {
+  background: #f5f5f5;  /* light grey on hover */
+}
+
+.action-btn .bi { color:#6c757d; font-size:1rem; }
+.filters-count { margin-left:.45rem; background:#0d6efd; color:#fff; border-radius:10px; padding:2px 7px; font-size:12px; vertical-align:middle; }
+
+/* square view toggles */
+.action-square { width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid #e9ecef; background:#fff; color:#6c757d; }
+
+/* people-list placeholder */
+.people-list { min-height:160px; border:1px solid #ececec; border-radius:8px; padding:40px; color:#6c757d; }
+
+/* Active filter pill */
+.active-filter {
+  position: relative; 
+  background: #f8f9fa;
+  color: #333;
+  border: 1px solid #e6e6e6;
+  padding: 6px 10px 6px 20px; /* extra left padding for the dot */
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+/* Green dot inside */
+.active-filter::before {
+  content: "";
+  position: absolute;
+  left: 8px;   /* position inside border */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #28a745; /* Bootstrap green */
+  border-radius: 50%;
+}
+
+/* per page */
+.perpage { width:70px; }
+
+/* responsive tweaks */
+@media (max-width: 768px) {
+  .search-box { width:100%; margin-bottom:.6rem; }
+  .action-btn span { display:none; }
+}
+
+
+/* Toggle Slider */
+.view-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.view-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000; /* black background */
+  border-radius: 30px;
+  padding: 4px 8px;
+  cursor: pointer;
+  height: 100%;
+  transition: background 0.3s ease;
+}
+
+.toggle-label .list-icon,
+.toggle-label .grid-icon {
+  color: #fff; /* icons white by default */
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.view-toggle input:checked + .toggle-label {
+  background: #fff; /* white background */
+}
+
+.view-toggle input:checked + .toggle-label .list-icon {
+  color: #000; /* black for inactive */
+}
+
+.view-toggle input:checked + .toggle-label .grid-icon {
+  color: #000; /* black for active */
+}
+
+/* Toggle container */
+.view-toggle {
+  display: flex;
+  border-radius: 25px;
+  overflow: hidden;
+  border: 1px solid #000;
+  width: 90px;
+  height: 38px;
+}
+
+/* Hide default radios */
+.view-toggle input {
+  display: none;
+}
+
+/* Each option */
+.toggle-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px; /* bigger for better look */
+}
+
+/* Default inactive state */
+.toggle-option {
+  background: #000;
+  color: #fff;
+}
+
+/* Active state */
+#listView:checked + .list-option {
+  background: #fff;
+  color: #000;
+}
+
+#gridView:checked + .grid-option {
+  background: #fff;
+  color: #000;
+}
+
+.toggle-option i {
+  font-size: 22px;   /* bigger size */
+  font-weight: 900;  /* bolder strokes where supported */
+}
