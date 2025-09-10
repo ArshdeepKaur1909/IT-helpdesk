@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Company Management</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="../assets/css/company_website.css">
+</head>
+
+<body>
+
+  <!-- TOP NAVBAR -->
+  <div class="topbar">
+    <div class="d-flex align-items-center gap-3">
+      <i class="bi bi-list fs-4 sidebar-toggle" title="Menu"></i>
+      <img id="companyLogo" class="vodafone-logo" src="../images/logo2.png">
+      <span class="fw-bold company-name"></span>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <i class="bi bi-star text-secondary" title="Star"></i>
+      <i class="bi bi-rocket text-secondary" title="Feature"></i>
+      <i class="bi bi-bell text-secondary" title="Notifications"></i>
+      <i class="bi bi-grid-3x3-gap text-secondary" title="Apps"></i>
+      <i class="bi bi-gear text-secondary" title="Settings"></i>
+
+      <!-- user logo + name -->
+      <div id="userProfile" class="d-flex align-items-center ms-2">
+        <img id="userLogoImg" class="user-logo d-none" alt="user logo">
+        <div id="userAvatar" class="user-avatar d-flex align-items-center justify-content-center">LR</div>
+        <span id="userName" class="ms-2 user-name"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="container-fluid p-4">
+    <!-- breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Company Management</li>
+        <li class="breadcrumb-item active">People</li>
+      </ol>
+    </nav>
+
+    <!-- header -->
+    <div class="page-header d-flex justify-content-between align-items-center mb-3">
+      <h3>Company Management</h3>
+      <div class="d-flex gap-2 align-items-center">
+        <button class="btn btn-cloud btn-light btn-sm"><i class="bi bi-cloud-arrow-down"></i> Import</button>
+        <button class="btn btn-cloud btn-light btn-sm"><i class="bi bi-cloud-arrow-up"></i> Export</button>
+        <button class="btn btn-outline-primary btn-sm"><i class="bi bi-people-fill"></i> Sync People</button>
+        <div class="btn-group">
+          <button class="btn btn-primary btn-sm"><i class="bi bi-person-plus-fill"></i> Add People</button>
+          <button class="btn btn-primary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
+            aria-expanded="false"></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Add single person</a></li>
+            <li><a class="dropdown-item" href="#">Bulk upload</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- top horizontal tabs -->
+    <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-2">
+      <ul class="nav top-tabs">
+        <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#" id="tabPeople">People</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Groups &amp; Permissions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Child Company Management <span class="dot"></span></a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Feature Requests</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Logs</a></li>
+      </ul>
+      <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-bell text-secondary fs-5 btn-sm"></i> People
+        Changes</button>
+    </div>
+
+    <!-- lower pills -->
+    <ul class="nav nav-pills lower-pills mb-3">
+      <li class="nav-item"><a class="nav-link pill-item active" href="#" data-pill="all">All People</a></li>
+      <li class="nav-item"><a class="nav-link pill-item" href="#" data-pill="integrations">Integrations &amp; Sync</a>
+      </li>
+      <li class="nav-item"><a class="nav-link pill-item" href="#" data-pill="ready">Ready for Import</a></li>
+      <li class="nav-item"><a class="nav-link pill-item" href="#" data-pill="imported">Imported</a></li>
+      <li class="nav-item"><a class="nav-link pill-item" href="#" data-pill="ignored">Ignored</a></li>
+    </ul>
+
+    <!-- Search + Actions -->
+    <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap">
+      <input type="text" id="searchInput" class="form-control search-box"
+        placeholder="Search by first name, last name or email...">
+
+      <div class="d-flex align-items-center gap-2 mt-2 mt-md-0">
+        <button class="btn action-btn" id="inviteBtn" title="Invite all">
+          <i class="bi bi-envelope-fill"></i>
+          <span class="d-none d-md-inline ms-1">Invite all</span>
+        </button>
+
+        <button class="btn action-btn" id="sortBtn" title="Sort">
+          <i class="bi bi-arrow-down-up"></i>
+          <span class="d-none d-md-inline ms-1">Sort</span>
+        </button>
+
+        <button class="btn action-btn" id="filtersBtn" title="Filters">
+          <i class="bi bi-funnel"></i>
+          <span class="d-none d-md-inline ms-1">Filters</span>
+          <span class="badge filters-count">1</span>
+        </button>
+
+        <!-- New slider toggle -->
+        <div class="view-toggle">
+          <input type="radio" id="listView" name="viewMode" checked>
+          <label for="listView" class="toggle-option list-option">
+            <i class="bi bi-list-ul"></i>
+          </label>
+
+          <input type="radio" id="gridView" name="viewMode">
+          <label for="gridView" class="toggle-option grid-option">
+            <i class="bi bi-grid-fill"></i>
+          </label>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- People header -->
+    <div class="d-flex justify-content-between align-items-center mt-4 flex-wrap">
+      <p class="mb-0">All People <small class="text-muted">(Showing 1-NaN of )</small></p>
+
+      <div class="d-flex align-items-center gap-2 mt-2 mt-md-0">
+        <span class="badge active-filter">Active <i class="bi bi-x"></i></span>
+        <label class="text-muted small mb-0 ms-2 me-1">Per page:</label>
+        <select class="form-select form-select-sm perpage">
+          <option>25</option>
+          <option>50</option>
+          <option>100</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- content area -->
+    <div class="people-list mt-3">
+      <!-- placeholder -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- App JS -->
+  <script src="../assets/js/company_website.js"></script>
+</body>
+
+</html>
