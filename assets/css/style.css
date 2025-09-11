@@ -1,0 +1,209 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fb;
+  min-height: 100vh;
+}
+
+/* Overlay Background */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.login-modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 24rem; /* ~380px */
+  text-align: center;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
+  animation: popUp 0.5s ease;
+}
+
+/* Logo */
+.login-modal .logo img {
+  width: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.login-modal h2 {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Input Fields */
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 0.06rem solid #d1d5db;
+  outline: none;
+  font-size: 0.9rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.25);
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.google-btn {
+  margin-top: 1rem;
+  background: #fff;
+  border: 0.06rem solid #d1d5db;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.google-btn i {
+  color: #db4437;
+}
+
+.google-btn:hover {
+  background: #f3f4f6;
+}
+
+/* Divider */
+.divider {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.divider span {
+  background: #fff;
+  padding: 0 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 0.06rem;
+  background: #e5e7eb;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes popUp {
+  from {transform: scale(0.9); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+/* Responsive Styles */
+@media (max-width: 48rem) { /* tablets and down */
+  .login-modal {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 30rem) { /* ~480px */
+  .login-modal {
+    width: 92%;
+    padding: 1.25rem;
+    border-radius: 0.8rem;
+  }
+
+  .login-modal h2 {
+    font-size: 1.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .input-group input {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .divider {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 22.5rem) { /* ~360px */
+  .login-modal {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .input-group input {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+  }
+}
