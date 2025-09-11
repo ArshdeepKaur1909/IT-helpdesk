@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Help Desk Ticketing</title>
   <link rel="icon" type="image/png" href="../images/logo2.png">
-  <link rel="stylesheet" href="/assets/css/helpdesk.css">
+  <link rel="stylesheet" href="../assets/css/helpdesk.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -32,17 +32,17 @@
 
     <!-- Center icons -->
     <div class="nav-icons" aria-hidden="false">
-      <i title="Notifications" class="fa-regular fa-bell"></i>
-      <i title="Messages" class="fa-regular fa-paper-plane"></i>
-      <i title="Apps" class="fa-solid fa-th"></i>
-      <i title="Orders" class="fa-solid fa-truck"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-rocket"></i>
+      <i class="fa-solid fa-book"></i>
+      <i class="fa-solid fa-grip"></i>
+      <i class="fa-solid fa-gear"></i>
     </div>
 
     <!-- Right -->
     <div class="nav-right">
-      <input class="email-input" value="helpdesk@noths.com" aria-label="workspace email">
-      <button class="add-btn">+ Add Workspace</button>
-
+      <!-- <input class="email-input" value="helpdesk@noths.com" aria-label="workspace email">
+      <button class="add-btn">+ Add Workspace</button> -->
       <div class="user-profile" title="Andrew Thomas">
         <div class="avatar">AT</div>
         <div class="username">Andrew Thomas</div>
@@ -98,29 +98,37 @@
 
     <!-- Main Content -->
     <main class="main-content">
-    <h1>Help Desk Ticketing</h1>
+    <h1 style="margin-bottom: 20px;">Help Desk Ticketing</h1>
 
-    <!-- Workspaces -->
-    <section class="workspace-section">
-        <div class="workspace-header">
-          <h2>Your Workspaces</h2>
-          <p>Workspaces allow companies to create different help desks for different groups inside the company.</p>
-        </div>
-        <input type="text" placeholder="Search by workspace name" class="search-bar">
-
-        <div class="workspace-card">
-          <div class="workspace-icon"><i class="fa fa-headset"></i></div>
-          <div class="workspace-info">
-            <h3>Helpdesk</h3>
-            <p>Admins, Everyone...</p>
-            <small>0 tickets • 1 form</small>
-          </div>
-        </div>
-    </section>
+    <!-- Workspaces Section -->
+            <section class="workspace-section" style="background-color: rgb(183, 227, 245);">
+                <div class="workspace-header" style="background-color: rgb(0, 9, 113); padding: 10px; position: relative; top: 0px; left: 0px;">
+                    <h2 style="color: white">Your Workspaces</h2>
+                    <p style="color: white">Workspaces allow companies to create different help desks for different groups inside the company.</p>
+                </div>
+                
+                <div class="searchBox"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Search by workspace name" class="search-bar"></div>
+                <div class="workspace-card" style="width: 300px; background-color: white;">
+                    <div class="workspace-icon"><i class="fas fa-headset"></i></div>
+                    <div class="workspace-info" style="width: 100%;">
+                        <h3>Helpdesk</h3><i class="fa-solid fa-ellipsis-vertical" style="position: relative; bottom: 27px; left: 90%;"></i>
+                        <div>
+                        <small><i class="fa-solid fa-users-line"></i></small>
+                        <small>Admins</small>
+                        </div>
+                        <div>
+                        <small><i class="fa-solid fa-ticket"></i></small>
+                        <small>0 tickets</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
     </main>
   </div>
 
   <!-- Script for Toggle -->
-  <script src = "/assets/js/helpdesk.js"></script>
+  <script src = "../assets/js/helpdesk.js"></script>
 </body>
 </html>
