@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="icon" type="image/png" href="../images/logo2.png">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <i class="fas fa-bars"></i>
+            <img id="companyLogo" class="vodafone-logo" src="../images/logo2.png">
+            <span class="company-name">Kelkoo Group</span>
+        </div>
+        <div class="nav-right">
+            <i class="fas fa-star" title="Star"></i>
+            <i class="fas fa-rocket" title="Feature"></i>
+            <i class="fas fa-bell" title="Notifications"></i>
+            <i class="fas fa-th" title="Apps"></i>
+            <i class="fas fa-cog" title="Settings"></i>
+            <div class="profile-mini">
+                <span class="circle">BS</span>
+                <span class="user-name">Bill Singh</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back + Action Buttons Row -->
+    <div class="top-row">
+        <a href="#" class="back-link"><i class="fas fa-arrow-left"></i> Back to all people</a>
+        <div class="action-buttons">
+            <button class="round-btn"><i class="fas fa-edit"></i></button>
+            <button class="round-btn"><i class="fas fa-pencil-alt"></i></button>
+            <button class="round-btn"><i class="fas fa-trash"></i></button>
+        </div>
+    </div>
+
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="avatar">BS</div>
+        <div class="profile-info">
+            <h1>Balkar Singh</h1>
+            <a href="mailto:balkar.singh.nz@gmail.com">balkar.singh.nz@gmail.com</a>
+            <p>Teammates</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li class="active"><i class="fas fa-user"></i> Profile</li>
+                <li><i class="fas fa-users-cog"></i> Groups & Permissions</li>
+                <li><i class="fas fa-box"></i> Assets <span class="count">0</span></li>
+                <li><i class="fas fa-file-contract"></i> Contracts <span class="count">0</span></li>
+                <li><i class="fas fa-plug"></i> Connected Apps <span class="count">0</span></li>
+                <li><i class="fas fa-clock"></i> Usage History</li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="content">
+            <!-- Blue Header Bar -->
+            <div class="blue-header">
+                <div class="left">
+                    <h2>Profile</h2>
+                    <input type="text" placeholder="Search..." class="search-bar">
+                </div>
+                <div class="right">
+                    <span class="invite-text">Invite Sent –</span>
+                    <button class="resend-btn"><i class="fas fa-paper-plane"></i> Resend</button>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <h3 class="section-heading">Contact Info</h3>
+            <div class="card">
+                <div class="grid-3">
+                    <div><strong>Mobile Phone</strong>
+                        <p>-</p>
+                    </div>
+                    <div><strong>Work Phone</strong>
+                        <p>-</p>
+                    </div>
+                    <div><strong>Work Email</strong>
+                        <p><a href="#">balkar.singh.nz@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company + Status -->
+            <div class="two-column">
+                <div class="col">
+                    <h3 class="section-heading">Company</h3>
+                    <div class="card">
+                        <div class="grid-3">
+                            <div><strong>Location</strong>
+                                <p>-</p>
+                            </div>
+                            <div><strong>Department</strong>
+                                <p>Geo 1</p>
+                            </div>
+                            <div><strong>Supervisor</strong>
+                                <p>-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h3 class="section-heading">Status & Access</h3>
+                    <div class="card">
+                        <div class="grid-4">
+                            <div>
+                                <strong>Status</strong>
+                                <p>Unlocked</p>
+                            </div>
+                            <div>
+                                <strong>SSO Login</strong>
+                                <p>No</p>
+                            </div>
+
+                            <!-- Out of Office -->
+                            <div class="status-item out-office">
+                                <div class="label">
+                                    <strong>Out of Office</strong>
+                                </div>
+                                <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                            </div>
+
+                            <div class="status-item active">
+                                <div class="label">
+                                    <strong>Active</strong>
+                                </div>
+                                <label class="switch"><input type="checkbox" checked><span
+                                        class="slider"></span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <h3 class="section-heading">Additional Information</h3>
+            <div class="card">
+                <div class="grid-2">
+                    <div><strong>Extension</strong>
+                        <p>-</p>
+                    </div>
+                    <div><strong>Title</strong>
+                        <p>Manager</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../assets/js/profile.js"></script>
+</body>
+
+</html>
