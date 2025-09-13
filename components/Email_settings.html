@@ -1,347 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>General Email Settings</title>
+  <link rel="icon" type="image/png" href="../images/logo2.png">
   <style>
     body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
 
     .main-container {
-    display: flex;
-    flex: 1;
+      display: flex;
+      flex: 1;
     }
+
     .right-panel {
-    width: 160px;              /* you can adjust width */
-    background: #fff;
+      width: 160px;
+      /* you can adjust width */
+      background: #fff;
     }
 
     /* Navbar */
     .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 50px;
-    background: #f9f9f9;
-    padding: 0 15px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    position: relative;  /* keep it above other content */
-    z-index: 10;         /* ensures shadow shows over sidebar/content */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      background: #f9f9f9;
+      padding: 0 15px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      position: relative;
+      /* keep it above other content */
+      z-index: 10;
+      /* ensures shadow shows over sidebar/content */
     }
 
 
-    .navbar-left, .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 35px;
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 35px;
     }
+
     .menu-desc {
-    display: none;               /* hidden by default */
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);   /* see-through text */
-    margin-left: 20px;
-    margin-top: 2px;
-    margin-bottom: 5px;
+      display: none;
+      /* hidden by default */
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+      /* see-through text */
+      margin-left: 20px;
+      margin-top: 2px;
+      margin-bottom: 5px;
     }
 
     /* show description when dropdown is active */
-    .dropdown.open + .menu-desc {
-    display: block;
+    .dropdown.open+.menu-desc {
+      display: block;
     }
 
 
     .icon {
-    font-size: 16px;
-    cursor: pointer;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .profile {
-    background: #f5b400;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      background: #f5b400;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Sidebar */
     .sidebar {
-    width: 260px;
-    background: #fff;
-    border-right: 1px solid #ddd;
-    padding: 20px 20px 20px 80px;
+      width: 260px;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 20px 20px 20px 80px;
     }
 
     .sidebar h3 {
-    margin: 25px 0 10px;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #555;
+      margin: 25px 0 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #555;
     }
 
     .menu-item {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
     }
 
-    .menu-item > li {
-    margin: 10px 0;
+    .menu-item>li {
+      margin: 10px 0;
     }
 
-    .menu-item > li > a {
-    text-decoration: none;
-    color: #333;
-    font-size: 15px;
-    display: flex;
+    .menu-item>li>a {
+      text-decoration: none;
+      color: #333;
+      font-size: 15px;
+      display: flex;
 
-    align-items: center;
-    cursor: pointer;
-    padding: 6px 8px;
-    border-radius: 6px;
-    transition: background 0.2s;
+      align-items: center;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
 
-    .menu-item > li > a:hover {
-    background: #f0f0f0;
+    .menu-item>li>a:hover {
+      background: #f0f0f0;
     }
-    .arrow{
-        margin-right: 20px;
+
+    .arrow {
+      margin-right: 20px;
     }
+
     .submenu {
-    list-style: none;
-    margin: 5px 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    border-left: 1px solid #ccc;  /* connector line */
-    padding-left: 10px;
+      list-style: none;
+      margin: 5px 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      border-left: 1px solid #ccc;
+      /* connector line */
+      padding-left: 10px;
     }
 
     .submenu li a {
-    font-size: 14px;
-    color: #444;
-    text-decoration: none;
-    display: block;
-    padding: 8px 8px;
-    border-radius: 4px;
+      font-size: 14px;
+      color: #444;
+      text-decoration: none;
+      display: block;
+      padding: 8px 8px;
+      border-radius: 4px;
     }
 
     .submenu li a:hover {
-    background: #e6f0ff;
-    color: #0056d6;
+      background: #e6f0ff;
+      color: #0056d6;
     }
 
     .submenu li a.active {
-    background: #e6f0ff;
-    color: #0056d6;
-    font-weight: bold;
+      background: #e6f0ff;
+      color: #0056d6;
+      font-weight: bold;
     }
 
     /* Main content */
     .main {
-    flex: 1;
-    padding: 30px;
-    border-right: 1px solid #ddd; /* this makes the line separator */
-    background: #fafafa;
+      flex: 1;
+      padding: 30px;
+      border-right: 1px solid #ddd;
+      /* this makes the line separator */
+      background: #fafafa;
     }
+
     .notice {
-    background: #fff4d6;
-    border: 1px solid #ffd26f;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 14px;
+      background: #fff4d6;
+      border: 1px solid #ffd26f;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
 
     .section-title {
-    font-size: 20px;
-    margin-bottom: 20px;
+      font-size: 20px;
+      margin-bottom: 20px;
     }
 
     .setting {
-    padding: 30px 0;
-    border-bottom: 1px solid #ddd; /* line separator */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid #ddd;
+      /* line separator */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
 
     .setting p {
-    margin: 0;
-    font-size: 15px;
-    color: #333;
-    line-height: 1.4;
+      margin: 0;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.4;
     }
 
 
     /* Toggle switch */
     .toggle {
-    width: 40px;
-    height: 20px;
-    background: #ccc;
-    border-radius: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.3s;
+      width: 40px;
+      height: 20px;
+      background: #ccc;
+      border-radius: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
     .toggle::before {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
-    transition: 0.3s;
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
     }
 
     .toggle.active {
-    background: #007bff;
+      background: #007bff;
     }
 
     .toggle.active::before {
-    transform: translateX(20px);
+      transform: translateX(20px);
     }
 
     /* Arrow indicator */
     .arrow {
-    font-size: 12px;
-    transition: transform 0.3s;
+      font-size: 12px;
+      transition: transform 0.3s;
     }
 
     .arrow.down {
-    transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+
+    /* ===== Overlay Sidebar ===== */
+    .overlay-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 18rem;
+      max-width: 80vw;
+      height: 100vh;
+      background: #23272f;
+      color: #fff;
+      z-index: 3000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      padding-top: 3.5rem;
+      overflow-y: auto;
+    }
+
+    .overlay-sidebar nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .overlay-sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .overlay-sidebar nav ul li a:hover,
+    .overlay-sidebar nav ul li a.active {
+      background: #444b58;
+      color: #ffd633;
+    }
+
+    body.overlay-sidebar-open .overlay-sidebar {
+      transform: translateX(0);
+    }
+
+    body.overlay-sidebar-open #sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 2999;
+    }
+
+    #sidebar-overlay {
+      display: none;
+    }
+
+    /* Menu button */
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      font-size: 1.4rem;
+      color: #374151;
+    }
+
+    .menu-btn:hover {
+      background: #f3f4f6;
+    }
+
+    /* Responsive widths */
+    @media (max-width: 48rem) {
+      .overlay-sidebar {
+        width: 75vw;
+      }
+    }
+
+    @media (max-width: 30rem) {
+      .overlay-sidebar {
+        width: 100vw;
+      }
     }
   </style>
-  
+
 </head>
+
 <body>
-    <!-- Top Navbar -->
-    <div class="navbar">
+  <div id="sidebar-overlay"></div>
+  <!-- Top Navbar -->
+  <div class="navbar">
     <div class="navbar-left">
-        <span class="icon">&#9776;</span>
-        <span>Kelkoo Group ▼</span>
-        <span>Geo 2 ▼</span>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle sidebar">
+        &#9776;
+      </button>
+
+      <span>Kelkoo Group ▼</span>
+      <span>Geo 2 ▼</span>
     </div>
     <div class="navbar-right">
-        <span class="icon">🔍</span>
-        <span class="icon">⚙️</span>
-        <div class="profile">BS</div>
+      <span class="icon">🔍</span>
+      <span class="icon">⚙️</span>
+      <div class="profile">BS</div>
     </div>
-    </div>
-<div class="main-container">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <h3>General</h3>
-    <ul class="menu-item">
-      <li>
-    <a class="dropdown"><span class="arrow">▶</span> Public Help Center </a>
-    <!-- <span class="menu-desc">(Portal, Knowledge Base, FAQs)</span> -->
-    <ul class="submenu">
-        <li><a href="#">Display Settings</a></li>
-        <li><a href="#">Custom Domain</a></li>
-    </ul>
-    </li>
-    </ul>
+  </div>
 
-    <h3>Custom Forms</h3>
-    <ul class="menu-item">
-      <li>
-        <a class="dropdown"><span class="arrow">▶</span>Email </a>
-        <ul class="submenu">
-          <li><a href="#" class="active">General Email Settings</a></li>
-          <li><a href="#">Notifications</a></li>
-          <li><a href="#">Email Format</a></li>
-          <li><a href="#">Templates</a></li>
-          <li><a href="#">Blocked Emails & Domains</a></li>
-          <li><a href="#">Blocked Email Keywords</a></li>
-        </ul>
-        <ul class="menu-item">
+  <aside class="overlay-sidebar" id="overlay-sidebar">
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="Helpdesk.html"><i class="fa fa-headset"></i> Helpdesk</a></li>
+        <li><a href="Availability.html"><i class="fa fa-clock"></i> Availability</a></li>
+        <li><a href="company_website.html"><i class="fa fa-globe"></i> Company Website</a></li>
+        <li><a href="Email_settings.html"><i class="fa fa-envelope"></i> Email Settings</a></li>
+        <li><a href="Geo2Tasks.html"><i class="fa fa-map-marker-alt"></i> Geo2Tasks</a></li>
+        <li><a href="Groups&Permissions.html"><i class="fa fa-users-cog"></i> Groups & Permissions</a></li>
+        <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+
+  <div class="main-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>General</h3>
+      <ul class="menu-item">
         <li>
-        <a class="dropdown"><span class="arrow">▶</span>Resources </a>
-        <ul class="submenu">
-        <li><a href="#">Resource 1</a></li>
-        <li><a href="#">Resource 2</a></li>
-        </ul>
-  </li>
-</ul>
-      </li>
-    </ul>
+          <a class="dropdown"><span class="arrow">▶</span> Public Help Center </a>
+          <!-- <span class="menu-desc">(Portal, Knowledge Base, FAQs)</span> -->
+          <ul class="submenu">
+            <li><a href="#">Display Settings</a></li>
+            <li><a href="#">Custom Domain</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>Custom Forms</h3>
+      <ul class="menu-item">
+        <li>
+          <a class="dropdown"><span class="arrow">▶</span>Email </a>
+          <ul class="submenu">
+            <li><a href="#" class="active">General Email Settings</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Email Format</a></li>
+            <li><a href="#">Templates</a></li>
+            <li><a href="#">Blocked Emails & Domains</a></li>
+            <li><a href="#">Blocked Email Keywords</a></li>
+          </ul>
+          <ul class="menu-item">
+            <li>
+              <a class="dropdown"><span class="arrow">▶</span>Resources </a>
+              <ul class="submenu">
+                <li><a href="#">Resource 1</a></li>
+                <li><a href="#">Resource 2</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="notice">⚠ Changes made on this page apply to workspace <b>Geo 2</b></div>
+
+      <h2 class="section-title">General Email Settings</h2>
+
+      <div class="setting">
+        <p><b>Settings for attachments in a ticket</b><br>Enable this setting to send an attachment via email. Disabling
+          this setting will send a link to the attachment instead. (Logged in users can access the link)</p>
+        <div class="toggle"></div>
+      </div>
+
+      <div class="setting">
+        <p><b>Allow all incoming emailed requests</b><br>Tickets emailed to your custom helpdesk email address will
+          automatically create a new ticket unless the sender was explicitly blocked.</p>
+        <div class="toggle active"></div>
+      </div>
+
+      <div class="setting">
+        <p><b>Allow unregistered users to receive help ticket updates via email</b><br>Enabling this option will allow
+          unregistered users (people not added to Genuity) to get email updates about their tickets.</p>
+        <div class="toggle"></div>
+      </div>
+
+      <div class="setting">
+        <p><b>Automatically set email recipients as 'impacted users' or 'followers'</b><br>Enabling this option will set
+          email recipients in the to and CC fields as the ‘impacted users’ or ‘followers’ when creating a ticket via
+          email.</p>
+        <div class="toggle"></div>
+      </div>
+
+      <div class="setting">
+        <p><b>Automatically set email comments recipients as 'impacted users' or 'followers'</b><br>Enabling this option
+          will set email comment recipients in the ‘CC’ fields as the ‘impacted users’ or ‘followers’ when creating a
+          comment via email.</p>
+        <div class="toggle"></div>
+      </div>
+    </div>
+    <div class="right-panel"></div>
   </div>
+  <script>
+    // Toggle switches
+    const toggles = document.querySelectorAll('.toggle');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+      });
+    });
 
-  <!-- Main Content -->
-  <div class="main">
-    <div class="notice">⚠ Changes made on this page apply to workspace <b>Geo 2</b></div>
-    
-    <h2 class="section-title">General Email Settings</h2>
+    // Dropdown menus
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(drop => {
+      drop.addEventListener('click', () => {
+        const submenu = drop.nextElementSibling;
+        const arrow = drop.querySelector('.arrow');
 
-    <div class="setting">
-      <p><b>Settings for attachments in a ticket</b><br>Enable this setting to send an attachment via email. Disabling this setting will send a link to the attachment instead. (Logged in users can access the link)</p>
-      <div class="toggle"></div>
-    </div>
+        if (submenu.style.maxHeight) {
+          submenu.style.maxHeight = null; // close
+        } else {
+          submenu.style.maxHeight = submenu.scrollHeight + "px"; // open
+        }
 
-    <div class="setting">
-      <p><b>Allow all incoming emailed requests</b><br>Tickets emailed to your custom helpdesk email address will automatically create a new ticket unless the sender was explicitly blocked.</p>
-      <div class="toggle active"></div>
-    </div>
+        arrow.classList.toggle("down");
+        drop.classList.toggle("open");  // ✅ this makes .menu-desc show
+      });
+    });
+  </script>
 
-    <div class="setting">
-      <p><b>Allow unregistered users to receive help ticket updates via email</b><br>Enabling this option will allow unregistered users (people not added to Genuity) to get email updates about their tickets.</p>
-      <div class="toggle"></div>
-    </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menu-btn");
+      const sidebarOverlay = document.getElementById("sidebar-overlay");
+      const overlaySidebar = document.getElementById("overlay-sidebar");
 
-    <div class="setting">
-      <p><b>Automatically set email recipients as 'impacted users' or 'followers'</b><br>Enabling this option will set email recipients in the to and CC fields as the ‘impacted users’ or ‘followers’ when creating a ticket via email.</p>
-      <div class="toggle"></div>
-    </div>
+      if (!menuBtn || !sidebarOverlay || !overlaySidebar) return;
 
-    <div class="setting">
-      <p><b>Automatically set email comments recipients as 'impacted users' or 'followers'</b><br>Enabling this option will set email comment recipients in the ‘CC’ fields as the ‘impacted users’ or ‘followers’ when creating a comment via email.</p>
-      <div class="toggle"></div>
-    </div>
-  </div>
-  <div class="right-panel"></div>
-</div>
-<script>
-  // Toggle switches
-  const toggles = document.querySelectorAll('.toggle');
-  toggles.forEach(toggle => {
-  toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-  });
-  });
+      // Open sidebar
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.body.classList.add("overlay-sidebar-open");
+        sidebarOverlay.style.display = "block";
+      });
 
-  // Dropdown menus
-  const dropdowns = document.querySelectorAll('.dropdown');
-  dropdowns.forEach(drop => {
-  drop.addEventListener('click', () => {
-  const submenu = drop.nextElementSibling;
-  const arrow = drop.querySelector('.arrow');
+      // Close when clicking overlay
+      sidebarOverlay.addEventListener("click", () => {
+        document.body.classList.remove("overlay-sidebar-open");
+        sidebarOverlay.style.display = "none";
+      });
 
-  if (submenu.style.maxHeight) {
-  submenu.style.maxHeight = null; // close
-  } else {
-  submenu.style.maxHeight = submenu.scrollHeight + "px"; // open
-  }
+      // Close with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.body.classList.remove("overlay-sidebar-open");
+          sidebarOverlay.style.display = "none";
+        }
+      });
 
-  arrow.classList.toggle("down");
-  drop.classList.toggle("open");  // ✅ this makes .menu-desc show
-  });
-  });
-</script>
+      // Prevent clicks inside sidebar from closing it
+      overlaySidebar.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+  </script>
+
 </body>
+
 </html>
