@@ -1,35 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
-  <link rel="icon" type="image/png" href="../images/logo2.png">
-  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fb;
+      min-height: 100vh;
+    }
+
+    /* Overlay Background */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 30, 30, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.5s ease;
+      z-index: 1000;
+    }
+
+    /* Modal Box */
+    .login-modal {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 24rem;
+      text-align: center;
+      box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
+      animation: popUp 0.5s ease;
+    }
+
+    /* Logo */
+    .login-modal .logo img {
+      width: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .login-modal h2 {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      font-size: 1.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Input Fields */
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      border: 0.06rem solid #d1d5db;
+      outline: none;
+      font-size: 0.9rem;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .input-group input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.25);
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .primary-btn {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .primary-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .google-btn {
+      margin-top: 1rem;
+      background: #fff;
+      border: 0.06rem solid #d1d5db;
+      color: #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .google-btn i {
+      color: #db4437;
+    }
+
+    .google-btn:hover {
+      background: #f3f4f6;
+    }
+
+    /* Divider */
+    .divider {
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #888;
+      font-size: 0.85rem;
+    }
+
+    .divider span {
+      background: #fff;
+      padding: 0 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 0.06rem;
+      background: #e5e7eb;
+    }
+
+    /* Extra Options */
+    .extra-options {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    .extra-options a {
+      color: #2563eb;
+      font-weight: 500;
+      text-decoration: none;
+      margin: 0 0.4rem;
+    }
+
+    .extra-options a:hover {
+      text-decoration: underline;
+    }
+
+    .guest-option {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .guest-option:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes popUp {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Font Awesome for Google Icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-  
-  <!-- Login Modal -->
+
   <div class="login-overlay">
     <div class="login-modal">
       <div class="logo">
-        <img src="../images/logo2.png" alt="Company Logo">
+        <img src="../images/logo2.png" alt="Devantra Logo">
       </div>
-      <h2>Welcome Back</h2>
+      <h2>Welcome To Devantra</h2>
       <p class="subtitle">Login to continue</p>
 
-      <form id="loginForm">
+      <!-- ✅ Django handles form -->
+      <form method="post">
         <div class="input-group">
-          <input type="email" id="email" placeholder="Email Address" required>
+          <input type="email" name="email" placeholder="Email Address" required>
         </div>
         <div class="input-group">
-          <input type="password" id="password" placeholder="Password" required>
+          <input type="password" name="password" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn primary-btn">Login</button>
+        <button type="button" class="btn primary-btn" onclick="window.location.href='profile.html'">Login</button>
       </form>
 
       <div class="divider">
@@ -39,9 +238,20 @@
       <button class="btn google-btn">
         <i class="fab fa-google"></i> Login with Google
       </button>
-    </div>
+
+      <div class="extra-options">
+        Don’t have an account?
+        <a href="signup.html" class="text-blue-600 hover:underline">Sign Up</a>
+      </div>
   </div>
 
-  <script src="../assets/js/script.js"></script>
+  <script>
+    // Keep guest & google button JS if needed
+    document.querySelector(".google-btn").addEventListener("click", function () {
+      alert("Google Login Clicked (Integrate Google OAuth here)");
+    });
+  </script>
+
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1200">
@@ -8,14 +9,495 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="style.css"> -->
 
-  <link rel="stylesheet" href="../assets/css/Geo2Tasks.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f6f8fa;
+      color: #2a367f;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 0.75rem 2rem 0.75rem 1rem;
+      border-bottom: 0.0625rem solid #e3e8ee;
+    }
+
+    .left-menu,
+    .workspace-switch {
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-icon {
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+    }
+
+    .kelkoo-group {
+      font-weight: 600;
+      letter-spacing: 0.03rem;
+      margin-right: 1.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .workspace-label {
+      color: #818cf8;
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .workspace-name {
+      background: #2a367f;
+      color: #fff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* User Profile */
+    .user-profile {
+      display: flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      background: #2ecc71;
+      color: #fff;
+      border-radius: 50%;
+      padding: 0.55rem 0.9rem;
+      margin-right: 0.45rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .user-name {
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+
+    .dropdown-arrow {
+      font-size: 1rem;
+    }
+
+    .user-profile:hover .user-dropdown {
+      display: block;
+    }
+
+    .user-dropdown {
+      display: none;
+      position: absolute;
+      top: 2.4rem;
+      right: 0;
+      background: #fff;
+      border: 0.0625rem solid #ececec;
+      box-shadow: 0 0.2rem 0.5rem #0001;
+      border-radius: 0.45rem;
+      min-width: 10rem;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: #2a367f;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      margin: 1.1rem 0 0 2.4rem;
+      color: #818cf8;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Heading */
+    h2 {
+      margin: 1rem 0 0 2.4rem;
+      color: #232f49;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    /* Tabs */
+    .main-tabs {
+      display: flex;
+      gap: 0.6rem;
+      margin: 1.5rem 0 1.5rem 2.4rem;
+    }
+
+    .tab {
+      background: #f6f8fa;
+      color: #232f49;
+      border: none;
+      border-bottom: 0.125rem solid transparent;
+      padding: 0.6rem 1.5rem 0.45rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 0.45rem 0.45rem 0 0;
+      transition: background 0.18s;
+    }
+
+    .tab.active,
+    .tab:hover {
+      background: #2a367f;
+      color: #fff;
+      border-bottom: 0.125rem solid #22c55e;
+    }
+
+    /* Tickets Section */
+    .tickets-section {
+      margin: 0 2.4rem;
+      background: #fff;
+      border-radius: 0.75rem;
+      box-shadow: 0 0.2rem 1.1rem -0.5rem #232f4922;
+      padding: 1.5rem 0 2rem 0;
+    }
+
+    .tickets-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 2rem 1rem 2rem;
+    }
+
+    .tickets-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .tickets-actions button {
+      background: #2a367f;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.45rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Filters */
+    .tickets-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 2rem 1.1rem 2rem;
+    }
+
+    .tickets-filters input,
+    .tickets-filters select {
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.45rem;
+      border: 0.0625rem solid #e3e8ee;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .tickets-filters button {
+      background: #22c55e;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 0.45rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Table */
+    .tickets-table {
+      width: 96%;
+      margin: 0 2rem;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+
+    .tickets-table th,
+    .tickets-table td {
+      padding: 0.8rem 0.4rem;
+      text-align: left;
+      border-bottom: 0.0625rem solid #f3f4f6;
+      vertical-align: middle;
+    }
+
+    .tickets-table th {
+      color: #818cf8;
+      font-weight: 700;
+      background: #fff;
+    }
+
+    .tickets-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Table Extras */
+    .avatar-cell {
+      font-weight: 700;
+      background: #818cf8;
+      color: #fff;
+      border-radius: 50%;
+      padding: 0.3rem 0.75rem;
+      margin-right: 0.4rem;
+      display: inline-block;
+    }
+
+    .status-open {
+      background: #dafbe1;
+      color: #22c55e;
+      padding: 0.25rem 0.8rem;
+      border-radius: 0.3rem;
+      font-weight: 500;
+    }
+
+    .status-inprogress {
+      background: #e0e7ff;
+      color: #6366f1;
+      padding: 0.25rem 0.8rem;
+      border-radius: 0.3rem;
+      font-weight: 500;
+    }
+
+    .priority-high {
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    .priority-low {
+      color: #0ea5e9;
+      font-weight: bold;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #232f4922;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      border-radius: 0.75rem;
+      width: 21rem;
+      padding: 1.6rem;
+      box-shadow: 0 0.5rem 1.5rem #232f4922;
+    }
+
+    .modal-content h3 {
+      margin-bottom: 1.1rem;
+      color: #232f49;
+    }
+
+    .modal-content label {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: #2a367f;
+      font-size: 0.95rem;
+    }
+
+    .modal-content input,
+    .modal-content select {
+      margin-top: 0.2rem;
+      width: 100%;
+      padding: 0.45rem 0.65rem;
+      border: 0.0625rem solid #e3e8ee;
+      border-radius: 0.45rem;
+    }
+
+    .modal-content button {
+      background: #2a367f;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.45rem;
+      font-weight: 600;
+      margin-right: 0.6rem;
+      cursor: pointer;
+    }
+
+    .modal-content button:last-child {
+      background: #d1d5db;
+      color: #232f49;
+      margin-right: 0;
+    }
+
+    .vodafone-logo {
+      width: 30px;
+      height: auto;
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 64rem) {
+      .tickets-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .tickets-filters {
+        flex-wrap: wrap;
+      }
+
+      .tickets-actions {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 48rem) {
+      header {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .main-tabs {
+        flex-wrap: wrap;
+      }
+
+      .tickets-section {
+        margin: 0 1rem;
+      }
+    }
+
+    @media (max-width: 30rem) {
+
+      h2,
+      .breadcrumb,
+      .main-tabs,
+      .tickets-section {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
+      .tickets-header {
+        margin: 0 1rem 1rem 1rem;
+      }
+
+      .tickets-filters {
+        margin: 0 1rem 1rem 1rem;
+      }
+
+      .tickets-table {
+        margin: 0 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ===== Overlay Sidebar ===== */
+    .overlay-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 18rem;
+      max-width: 80vw;
+      height: 100vh;
+      background: #23272f;
+      color: #fff;
+      z-index: 3000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      padding-top: 3.5rem;
+      overflow-y: auto;
+    }
+
+    .overlay-sidebar nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .overlay-sidebar nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .overlay-sidebar nav ul li a:hover,
+    .overlay-sidebar nav ul li a.active {
+      background: #444b58;
+      color: #ffd633;
+    }
+
+    body.overlay-sidebar-open .overlay-sidebar {
+      transform: translateX(0);
+    }
+
+    body.overlay-sidebar-open #sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 2999;
+    }
+
+    #sidebar-overlay {
+      display: none;
+    }
+
+    /* Menu button */
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      font-size: 1.4rem;
+      color: #374151;
+    }
+
+    .menu-btn:hover {
+      background: #f3f4f6;
+    }
+
+    /* Responsive widths */
+    @media (max-width: 48rem) {
+      .overlay-sidebar {
+        width: 75vw;
+      }
+    }
+
+    @media (max-width: 30rem) {
+      .overlay-sidebar {
+        width: 100vw;
+      }
+    }
+  </style>
 
 </head>
 
 <body>
+  <div id="sidebar-overlay"></div>
   <header>
     <div class="left-menu">
-      <span class="menu-icon">&#9776;</span>
+      <button class="menu-btn" id="menu-btn" aria-label="Toggle sidebar">
+        &#9776;
+      </button>
       <img id="companyLogo" class="vodafone-logo" src="../images/logo2.png">
       <span class="kelkoo-group">Kelkoo Group</span>
     </div>
@@ -33,6 +515,22 @@
       </div>
     </div>
   </header>
+
+  <aside class="overlay-sidebar" id="overlay-sidebar">
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="Helpdesk.html"><i class="fa fa-headset"></i> Helpdesk</a></li>
+        <li><a href="Availability.html"><i class="fa fa-clock"></i> Availability</a></li>
+        <li><a href="company_website.html"><i class="fa fa-globe"></i> Company Website</a></li>
+        <li><a href="Email_settings.html"><i class="fa fa-envelope"></i> Email Settings</a></li>
+        <li><a href="Geo2Tasks.html"><i class="fa fa-map-marker-alt"></i> Geo2Tasks</a></li>
+        <li><a href="Groups&Permissions.html"><i class="fa fa-users-cog"></i> Groups & Permissions</a></li>
+        <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+      </ul>
+    </nav>
+  </aside>
+
 
   <main>
     <section class="breadcrumb">
@@ -59,7 +557,8 @@
         </div>
       </div>
       <div class="tickets-filters">
-        <input type="text" id="searchInput" placeholder="Search by subject, comment, description, ticket number or asset tag">
+        <input type="text" id="searchInput"
+          placeholder="Search by subject, comment, description, ticket number or asset tag">
         <select id="statusFilter">
           <option value="all">Active</option>
           <option value="open">Open</option>
@@ -110,6 +609,174 @@
     </div>
   </div>
 
-  <script src="../assets/js/Geo2Tasks.js"></script>
+  <script>
+    const tickets = [
+      {
+        number: 1,
+        assigned: "Jesse Bindra",
+        assignedShort: "JB",
+        status: "In Progress",
+        priority: "High",
+        subject: "Test Ticket",
+        description: "Please can you address the test ticket ID 122345"
+      },
+      {
+        number: 2,
+        assigned: "Jesse Bindra",
+        assignedShort: "JB",
+        status: "Open",
+        priority: "Low",
+        subject: "Test 2",
+        description: "Please can someone open the door"
+      },
+      {
+        number: 3,
+        assigned: "Bill Singh",
+        assignedShort: "BS",
+        status: "Open",
+        priority: "Low",
+        subject: "Finance",
+        description: "Send me the P&L for review"
+      }
+    ];
+
+    function renderTickets(filterStatus = "all") {
+      const tbody = document.querySelector("#ticketsTable tbody");
+      tbody.innerHTML = "";
+      let filtered = tickets;
+      if (filterStatus !== "all") {
+        filtered = tickets.filter(t => filterStatus === "open" ? t.status === "Open" : t.status === "In Progress");
+      }
+      filtered.forEach(ticket => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+      <td>${ticket.number}</td>
+      <td><span class="avatar-cell">${ticket.assignedShort}</span> ${ticket.assigned}</td>
+      <td>
+        <span class="${ticket.status === "Open" ? "status-open" : "status-inprogress"}">${ticket.status}</span>
+      </td>
+      <td>
+        <span class="${ticket.priority === "High" ? "priority-high" : "priority-low"}">${ticket.priority}</span>
+      </td>
+      <td>${ticket.subject}</td>
+      <td>${ticket.description}</td>
+    `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      renderTickets();
+
+      document.getElementById("statusFilter").addEventListener("change", function (e) {
+        renderTickets(e.target.value);
+      });
+
+      document.getElementById("searchInput").addEventListener("input", function (e) {
+        const val = e.target.value.toLowerCase();
+        const tbody = document.querySelector("#ticketsTable tbody");
+        tbody.innerHTML = "";
+        tickets.filter(t => (
+          t.subject.toLowerCase().includes(val) ||
+          t.description.toLowerCase().includes(val) ||
+          t.assigned.toLowerCase().includes(val)
+        )).forEach(ticket => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+        <td>${ticket.number}</td>
+        <td><span class="avatar-cell">${ticket.assignedShort}</span> ${ticket.assigned}</td>
+        <td>
+          <span class="${ticket.status === "Open" ? "status-open" : "status-inprogress"}">${ticket.status}</span>
+        </td>
+        <td>
+          <span class="${ticket.priority === "High" ? "priority-high" : "priority-low"}">${ticket.priority}</span>
+        </td>
+        <td>${ticket.subject}</td>
+        <td>${ticket.description}</td>
+      `;
+          tbody.appendChild(tr);
+        });
+      });
+
+      // Modal open/close
+      document.getElementById("addTicketBtn").onclick = () => {
+        document.getElementById("addTicketModal").style.display = "flex";
+      };
+      window.closeModal = () => {
+        document.getElementById("addTicketModal").style.display = "none";
+      };
+      // Add ticket
+      document.getElementById("addTicketForm").onsubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        tickets.push({
+          number: tickets.length + 1,
+          assigned: form.assigned.value,
+          assignedShort: form.assigned.value.split(' ').map(w => w[0]).join('').toUpperCase(),
+          status: form.status.value,
+          priority: form.priority.value,
+          subject: form.subject.value,
+          description: form.description.value
+        });
+        closeModal();
+        renderTickets();
+        form.reset();
+      };
+    });
+
+    // Sorting functionality
+    window.sortTickets = function (field) {
+      if (field === 'number') {
+        tickets.sort((a, b) => a.number - b.number);
+      }
+      renderTickets();
+    }
+
+    // Tab switching (demo, extend as needed)
+    document.querySelectorAll(".main-tabs .tab").forEach(btn => {
+      btn.onclick = function () {
+        document.querySelectorAll(".main-tabs .tab").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        // Optionally, filter contents based on tab here
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menu-btn");
+      const sidebarOverlay = document.getElementById("sidebar-overlay");
+      const overlaySidebar = document.getElementById("overlay-sidebar");
+
+      if (!menuBtn || !sidebarOverlay || !overlaySidebar) return;
+
+      // Open sidebar
+      menuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        document.body.classList.add("overlay-sidebar-open");
+        sidebarOverlay.style.display = "block";
+      });
+
+      // Close when clicking overlay
+      sidebarOverlay.addEventListener("click", () => {
+        document.body.classList.remove("overlay-sidebar-open");
+        sidebarOverlay.style.display = "none";
+      });
+
+      // Close with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.body.classList.remove("overlay-sidebar-open");
+          sidebarOverlay.style.display = "none";
+        }
+      });
+
+      // Prevent clicks inside sidebar from closing it
+      overlaySidebar.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+    });
+  </script>
 </body>
+
 </html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fb;
+            min-height: 100vh;
+        }
+
+        .signup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 30, 30, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+            z-index: 1000;
+        }
+
+        .signup-modal {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 100%;
+            max-width: 40rem;
+            /* wider card */
+            max-height: 90vh;
+            /* allow scrolling */
+            overflow-y: auto;
+            text-align: center;
+            box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
+            animation: popUp 0.5s ease;
+        }
+
+        .signup-modal h2 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            font-size: 1.5rem;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .input-group {
+            flex: 1;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            color: #444;
+            font-weight: 500;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            border: 0.06rem solid #d1d5db;
+            outline: none;
+            font-size: 0.9rem;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 0.15rem rgba(37, 99, 235, 0.25);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .extra-options {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .extra-options a {
+            color: #2563eb;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .extra-options a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popUp {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="signup-overlay">
+        <div class="signup-modal">
+            <h2>Create Your Account</h2>
+            <p class="subtitle">Join Calmora today</p>
+
+            <form method="post" enctype="multipart/form-data">
+
+                <!-- Row 1 -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" required>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="text" id="contact" name="contact" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="city">Gender</label>
+                        <select id="city" name="city" required>
+                            <option value="">-- Select City --</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Mohali">Mohali</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">-- Select Gender --</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="image">Profile Image</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="type">Register as:</label>
+                        <select id="type" name="type" required>
+                            <option value="">-- Select Role --</option>
+                            <option value="student">User</option>
+                            <option value="volunteer">Manager</option>
+                            <option value="counsellor">Admin</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="button" class="btn primary-btn" onclick="window.location.href='index.html'">Sign Up</button>
+            </form>
+
+            <div class="extra-options">
+                Already have an account? <a href="index.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
