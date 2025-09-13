@@ -260,114 +260,112 @@ body {
   padding: 20px;
 }
 
-/* Topbar */
-.topbar {
+/* Main Content Header */
+.main-header{
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 10px;
+  padding: 10px 0px;
 }
 
-.topbar h1 {
-  font-size: 1.5rem;
-  flex: 1;
-}
-
-.menu-btn {
-  display: none;
-  background: none;
+.add-workspace-btn {
+  height: max-content;
+  background-color: #3498db;
+  color: #fff;
   border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.email-input {
-  padding: 8px;
-  border: 1px solid #ccc;
   border-radius: 6px;
-}
-
-.add-btn {
-  padding: 8px 12px;
-  border: none;
-  background: #2d79f3;
-  color: white;
-  border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
-}
-
-.add-btn:hover {
-  background: #1d5ac8;
-}
-
-.user-profile {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-}
-
-.avatar {
-  background: #d63384;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 50%;
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.username {
-  font-size: 0.9rem;
-  color: #555;
+  gap: 8px; /* space between icon and text */
+  transition: background 0.3s ease;
+  padding: 10px 18px;
 }
 
 /* Workspace Section */
-        .workspace-section {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        
-        .workspace-header {
-            margin-bottom: 25px;
-            border-radius: 10px;
-        }
-        
-        .workspace-header h2 {
-            font-size: 24px;
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-        
-        .workspace-header p {
-            color: #7f8c8d;
-            font-size: 15px;
-        }
-        
-        .search-bar {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 15px;
-            background: #f9f9f9;
-        }
-        
-        .search-bar:focus {
-            outline: none;
-            border-color: #3498db;
-            background: white;
-        }
-        
-        .workspace-card {
+.workspace-section {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.workspace-header{
+  background-color: #041b44; 
+  padding: 10px;
+  display: flex;
+  gap: 20px 40px;
+  justify-content: space-between;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.part1{
+  display: flex;
+  gap: 5px;
+}
+
+.part1 p{
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.part1 i{
+   color: white;
+   font-size: 20px;
+   opacity: 0.6;
+   margin: 5px;
+}
+
+.part2{
+  display: flex;
+  align-items: center;
+  position: relative;
+  right: 17%;
+}
+
+.part2 div{
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.part2 div i{
+  position: relative;
+  font-size: 8px;
+  bottom: 9px;
+  left: 5.5px;
+}
+
+.part2 p{
+  color: white;
+  font-size: 10px;
+  opacity: 0.5;
+  margin: 3px 7px;
+}
+
+.searchBox{
+  width: 600px;
+  height: 40px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: white;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchBox input{
+  border: none;
+  width: 400px;
+  background-color: #80808000;
+  margin: 0px 20px;
+}
+
+.workspace-card {
             width: max-content;
             display: flex;
             align-items: center;
@@ -415,51 +413,8 @@ body {
             color: #95a5a6;
             font-size: 13px;
         }
-        
-        .add-workspace-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            background: #f9f9f9;
-            color: #7f8c8d;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-        
-        .add-workspace-btn:hover {
-            border-color: #3498db;
-            color: #3498db;
-            background: #e1f0fa;
-        }
-        
-        .add-workspace-btn i {
-            margin-right: 10px;
-        }
-        
-        /* Breadcrumb */
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .breadcrumb a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        .breadcrumb span {
-            margin: 0 8px;
-        }
-        
-        @media (max-width: 768px) {
+
+@media (max-width: 768px) {
             .container {
                 flex-direction: column;
             }
@@ -483,22 +438,4 @@ body {
             .nav-links a {
                 white-space: nowrap;
             }
-          } 
-          
-.searchBox{
-  width: 600px;
-  height: 40px;
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: white;
-  padding: 0px 20px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-.searchBox input{
-  border: none;
-  width: 400px;
-  background-color: #80808000;
-  margin: 0px 20px;
-}          
+          }         
