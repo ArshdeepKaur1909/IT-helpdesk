@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Groups & Permissions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7fb; color: #333; }
+        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 10px 20px; }
+        .logo { color: #f1c40f; font-size: 24px; margin-right: 10px; }
+        .header-icons { margin-left: auto; display: flex; align-items: center; }
+        .header-icons i { margin: 0 10px; color: #bdc3c7; }
+        .profile { background-color: #f1c40f; color: #fff; border-radius: 50%; padding: 5px 10px; margin-left: 10px; }
+        .sidebar { width: 200px; background-color: #fff; height: 100vh; position: fixed; border-right: 1px solid #e0e0e0; padding-top: 20px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { padding: 10px 20px; display: flex; align-items: center; }
+        .sidebar li.active { background-color: #ffebee; color: #e74c3c; }
+        .sidebar i { margin-right: 10px; color: #bdc3c7; }
+        main { margin-left: 200px; padding: 20px; }
+        h2 { color: #34495e; }
+        .group-select { width: 200px; border: 1px solid #e0e0e0; padding: 10px; border-radius: 5px; }
+        .add-btn { background-color: #bdc3c7; color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+        .workspace-icon { color: #e74c3c; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars logo"></i>
+        <span>Kelkoo Group</span>
+        <div class="header-icons">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-rocket"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <div class="profile">BS Bill Singh</div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <ul>
+            <li class="active"><i class="fas fa-user"></i> Profile</li>
+            <li><i class="fas fa-box"></i> Assets <span>0</span></li>
+            <li><i class="fas fa-address-book"></i> Contacts <span>0</span></li>
+            <li><i class="fas fa-plug"></i> Connected Apps <span>0</span></li>
+            <li><i class="fas fa-history"></i> Usage History</li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Groups & Permissions</h2>
+        <label>Select Group</label>
+        <select class="group-select">
+            <option>Select Group</option>
+        </select>
+        <button class="add-btn">+ Add</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Basic Company Permissions</th>
+                    <th>Permission</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-box"></i> Asset Management</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-shopping-cart"></i> SaaS and Vendor Management</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-file-contract"></i> Contract Management</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-phone"></i> Telecom Management</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-network-wired"></i> Network Monitoring</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-building"></i> Company Settings</td>
+                    <td>None</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Help Desk Workspace Permissions</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td><i class="fas fa-headset workspace-icon"></i> Geo 1</td>
+                    <td>Select option</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-headset workspace-icon"></i> Geo 2</td>
+                    <td>Read All</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-headset workspace-icon"></i> Geo 3</td>
+                    <td>Basic Access(End User)</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        // Basic dropdown change functionality (mock)
+        const groupSelect = document.querySelector('.group-select');
+        groupSelect.addEventListener('change', (e) => {
+            console.log('Selected group:', e.target.value);
+            // Could update permissions dynamically if more data
+        });
+    </script>
+</body>
+</html>
