@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Desk Ticketing - Workspaces</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7fb; color: #333; }
+        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 10px 20px; }
+        .logo { color: #9b59b6; font-size: 24px; margin-right: 10px; }
+        .workspace-select { background-color: #ecf0f1; border: none; font-size: 16px; color: #3498db; }
+        .header-icons { margin-left: auto; display: flex; align-items: center; }
+        .header-icons i { margin: 0 10px; color: #bdc3c7; }
+        .profile { background-color: #9b59b6; color: #fff; border-radius: 50%; padding: 5px 10px; margin-left: 10px; }
+        .sidebar { width: 200px; background-color: #fff; height: 100vh; position: fixed; border-right: 1px solid #e0e0e0; padding-top: 20px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { padding: 10px 20px; display: flex; align-items: center; }
+        .sidebar li.active { background-color: #ffebee; color: #e74c3c; }
+        .sidebar i { margin-right: 10px; color: #e74c3c; }
+        main { margin-left: 200px; padding: 20px; }
+        h1 { color: #e74c3c; }
+        .add-btn { background-color: #3498db; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        .workspaces-header { background-color: #34495e; color: #fff; padding: 10px; border-radius: 5px 5px 0 0; }
+        .search-input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #e0e0e0; border-radius: 5px; }
+        .workspace-card { background-color: #fff; border: 1px solid #e0e0e0; border-radius: 5px; padding: 20px; margin: 10px 0; display: flex; align-items: center; }
+        .workspace-icon { background-color: #bdc3c7; border-radius: 50%; padding: 10px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars logo"></i>
+        <span>NotOnTheHighstreet</span>
+        <select class="workspace-select">
+            <option>Help Desk Workspace: Help Desk</option>
+        </select>
+        <div class="header-icons">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-rocket"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <div class="profile">AT Andrew Thomas</div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <ul>
+            <li>MAIN</li>
+            <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li><i class="fas fa-ticket-alt"></i> Tickets</li>
+            <li><i class="fas fa-inbox"></i> Incoming</li>
+            <li>ADDITIONAL</li>
+            <li><i class="fas fa-users"></i> People</li>
+            <li class="active"><i class="fas fa-th"></i> Workspaces</li>
+            <li><i class="fas fa-book"></i> Resources</li>
+            <li><i class="fas fa-chart-bar"></i> Reporting</li>
+            <li><i class="fas fa-clock"></i> Task Scheduler</li>
+            <li><i class="fas fa-robot"></i> Automation</li>
+            <li>DATA</li>
+            <li><i class="fas fa-cloud-download-alt"></i> Export Data</li>
+            <li><i class="fas fa-cloud-upload-alt"></i> Import Data</li>
+            <li>SETTINGS</li>
+            <li><i class="fas fa-cog"></i> Settings</li>
+            <li><i class="fas fa-bell"></i> Alerts</li>
+            <li><i class="fas fa-lock"></i> Permissions</li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Help Desk Ticketing</h1>
+        <button class="add-btn">+ Add Workspace</button>
+        <div class="workspaces-header">
+            Your Workspaces <i class="fas fa-info-circle"></i> Workspaces allow companies to create different help desks for different groups inside the company.
+        </div>
+        <input type="search" class="search-input" placeholder="Search by workspace name">
+        <div class="workspace-card">
+            <div class="workspace-icon"><i class="fas fa-headset"></i></div>
+            <h3>Helpdesk</h3>
+            <p>Admins. Everyone ...</p>
+            <p>0 tick.</p>
+            <p>1 for...</p>
+        </div>
+    </main>
+    <script>
+        // Basic search functionality (filter workspaces)
+        const searchInput = document.querySelector('.search-input');
+        const workspaceCard = document.querySelector('.workspace-card');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (!'helpdesk'.toLowerCase().includes(query)) {
+                workspaceCard.style.display = 'none';
+            } else {
+                workspaceCard.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
