@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability - Schedules</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #fff; color: #333; padding: 20px; }
+        .tabs { border-bottom: 1px solid #3498db; margin-bottom: 20px; }
+        .tabs span { margin-right: 20px; color: #3498db; cursor: pointer; }
+        .schedule-select { font-size: 18px; color: #3498db; border: none; background: none; }
+        .active-select { font-size: 14px; color: #3498db; border: none; background: none; }
+        h3 { color: #3498db; }
+        .day-row { display: flex; align-items: center; margin: 10px 0; background-color: #f9f9f9; padding: 10px; border-radius: 5px; }
+        .day-circle { background-color: #3498db; color: #fff; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-right: 20px; }
+        .time-input { border: 1px solid #e0e0e0; padding: 5px; margin: 0 5px; border-radius: 5px; }
+        .action-icons i { margin-left: 10px; color: #bdc3c7; cursor: pointer; }
+        .timezone { margin-top: 20px; color: #3498db; }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <span>Schedules</span> <span>Holidays</span> <span>Calendar settings</span>
+    </div>
+    <h2>Schedule</h2>
+    <select class="schedule-select">
+        <option>Working hours (default)</option>
+    </select>
+    <select class="active-select">
+        <option>Active on: 1 event type</option>
+    </select>
+    <h3>Weekly hours</h3>
+    <p>Set when you are typically available for meetings</p>
+    <div id="schedule-list">
+        <div class="day-row">
+            <div class="day-circle">S</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">M</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">T</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">W</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">T</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">F</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+        <div class="day-row">
+            <div class="day-circle">S</div>
+            <input type="time" class="time-input" value="10:00"> - <input type="time" class="time-input" value="20:00">
+            <div class="action-icons"><i class="fas fa-times"></i> <i class="fas fa-plus"></i> <i class="fas fa-copy"></i></div>
+        </div>
+    </div>
+    <div class="timezone">UK, Ireland, Lisbon Time</div>
+    <script>
+        // Functionality to add/remove time slots
+        const scheduleList = document.getElementById('schedule-list');
+        scheduleList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('fa-times')) {
+                e.target.closest('.day-row').remove();
+            } else if (e.target.classList.contains('fa-plus')) {
+                const newRow = e.target.closest('.day-row').cloneNode(true);
+                scheduleList.appendChild(newRow);
+            }
+        });
+    </script>
+</body>
+</html>
