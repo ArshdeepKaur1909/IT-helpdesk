@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo 2 Ticketing - Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f7fb; color: #333; }
+        header { background-color: #fff; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 10px 20px; }
+        .logo { color: #f1c40f; font-size: 24px; margin-right: 10px; }
+        .workspace-select { background-color: #ecf0f1; border: none; font-size: 16px; color: #3498db; }
+        .header-icons { margin-left: auto; display: flex; align-items: center; }
+        .header-icons i { margin: 0 10px; color: #bdc3c7; }
+        .profile { background-color: #f1c40f; color: #fff; border-radius: 50%; padding: 5px 10px; margin-left: 10px; }
+        .sidebar { width: 200px; background-color: #fff; height: 100vh; position: fixed; border-right: 1px solid #e0e0e0; padding-top: 20px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { padding: 10px 20px; display: flex; align-items: center; }
+        .sidebar li.active { background-color: #ffebee; color: #e74c3c; }
+        .sidebar i { margin-right: 10px; color: #e74c3c; }
+        main { margin-left: 200px; padding: 20px; }
+        h1 { color: #34495e; }
+        .add-btn { background-color: #34495e; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; float: right; }
+        .tabs { background-color: #fff; padding: 10px; border-bottom: 1px solid #e0e0e0; }
+        table { width: 100%; border-collapse: collapse; background-color: #fff; margin-top: 10px; border-radius: 5px; overflow: hidden; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+        th { background-color: #f9f9f9; cursor: pointer; }
+        .status { color: #27ae60; background-color: #e8f5e9; padding: 5px; border-radius: 5px; }
+        .priority { color: #e74c3c; background-color: #ffebee; padding: 5px; border-radius: 5px; }
+        .assigned { display: flex; align-items: center; }
+        .assigned-icon { border-radius: 50%; padding: 5px; margin-right: 5px; color: #fff; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fas fa-bars logo"></i>
+        <span>Kelkoo Group</span>
+        <select class="workspace-select">
+            <option>Help Desk Workspace: Geo 2</option>
+        </select>
+        <div class="header-icons">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-rocket"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-cog"></i>
+            <div class="profile">BS Bill Singh</div>
+        </div>
+    </header>
+    <nav class="sidebar">
+        <ul>
+            <li>MAIN</li>
+            <li><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+            <li class="active"><i class="fas fa-ticket-alt"></i> Tickets</li>
+            <li><i class="fas fa-inbox"></i> People</li>
+            <li><i class="fas fa-inbox"></i> Incoming</li>
+            <li><i class="fas fa-th"></i> Workspaces</li>
+            <li><i class="fas fa-book"></i> Resources</li>
+            <li><i class="fas fa-chart-bar"></i> Reporting</li>
+            <li><i class="fas fa-clock"></i> Task Scheduler</li>
+            <li><i class="fas fa-robot"></i> Automation</li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Geo 2 Ticketing</h1>
+        <button class="add-btn">+ Add Ticket</button>
+        <div class="tabs">
+            Tickets (Showing 3 of 3) <span>My Active Tickets</span> <span>All Active Tickets</span> <span>Unassigned</span>
+        </div>
+        <input type="search" placeholder="Search by subject, comment, description, ticket number, asset tag">
+        <table id="tickets-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Assigned To</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Subject</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="assigned"><div class="assigned-icon" style="background-color: #e67e22;">JB</div> Jesse Bindra</td>
+                    <td class="status">In Progress</td>
+                    <td class="priority">High</td>
+                    <td>Test Ticket</td>
+                    <td>Please can you address the test ticket ID 12345</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="assigned"><div class="assigned-icon" style="background-color: #e67e22;">JB</div> Jesse Bindra</td>
+                    <td class="status">Open</td>
+                    <td>Low</td>
+                    <td>Test 2</td>
+                    <td>Please can someone open the door</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="assigned"><div class="assigned-icon" style="background-color: #27ae60;">BS</div> Bill Singh</td>
+                    <td class="status">Open</td>
+                    <td>Low</td>
+                    <td>Finance</td>
+                    <td>Send me the P&L for review</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        // Sorting functionality for table
+        const table = document.getElementById('tickets-table');
+        const headers = table.querySelectorAll('th');
+        headers.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const rows = Array.from(table.tBodies[0].rows);
+                rows.sort((a, b) => {
+                    const aText = a.cells[index].textContent.trim();
+                    const bText = b.cells[index].textContent.trim();
+                    return aText.localeCompare(bText, undefined, {numeric: true});
+                });
+                rows.forEach(row => table.tBodies[0].appendChild(row));
+            });
+        });
+    </script>
+</body>
+</html>
